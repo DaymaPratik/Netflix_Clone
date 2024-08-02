@@ -1,0 +1,36 @@
+{
+    "routes":[
+        {
+          "src":"/",
+          "dest":"/"
+        },
+        {
+           "src":"/tvspage",
+          "dest":"/"
+        },
+        {
+            "src":"/movies",
+           "dest":"/"
+         },
+         {
+            "src":"/browse",
+           "dest":"/"
+         },
+         {
+            "src":"/search",
+           "dest":"/"
+         },
+         {
+            "src":"/history",
+           "dest":"/"
+         },
+         {
+            "src":"/movie/details/:id",
+           "dest":"/"
+         },
+         {
+          "src":"/tv/details/:id",
+          "dest":"/"
+         }
+    ]
+}
