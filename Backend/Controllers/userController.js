@@ -1,6 +1,6 @@
 const UserModel=require('../Model/userModel');
 const bcrypt=require('bcryptjs');
-
+const jwt=require('jsonwebtoken');
 const loginUserFunction=async (req,res)=>{
     try { 
         const {email,password}=req.body;
@@ -14,6 +14,18 @@ const loginUserFunction=async (req,res)=>{
         }
         const passMatch=await bcrypt.compare(password,ifUserExists.password)
         if(!passMatch){
+            const token=jwt.sign(
+                {id:ifUserExists._id,email},
+                'ajfwjrirewifhwfwrgfwhrfghwihwgfwuiwrefwyruecyrwuwfyecurchburctr9b',
+                {expiresIn:'1h'}
+              )
+              ifUserExists.token=token;
+              ifUserExists.password=undefined;
+              const options={
+                expires:new Date(Date.now()+3*24*60*60*1000),
+                path:'/',
+               }
+             res.cookie("token",token,options)
             res.json({success:false,message:"Enter correct Password"});
             return ;
         }
@@ -46,6 +58,19 @@ const registerUserFunction=async(req,res)=>{
             email,
             password:securePass
         });
+        const token=jwt.sign(
+            {id:newlyCreatedUser._id,email},
+            "ajfwjrirewifhwfwrgfwhrfghwihwgfwuiwrefwyruecyrwuwfyecurchburctr9b",
+            {expiresIn:"1h"}
+           )
+        
+           newlyCreatedUser.token=token;
+           newlyCreatedUser.password=undefined;
+        const options={
+            expires:new Date(Date.now()+3*24*60*60*1000),
+            path:'/',
+           }
+           res.cookie("token",token,options)
         console.log(newlyCreatedUser); 
         res.status(200).json({status:true,message:"User Registration successfull",userObj:newlyCreatedUser})
     } catch (error) {

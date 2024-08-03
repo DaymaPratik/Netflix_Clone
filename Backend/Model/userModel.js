@@ -11,6 +11,9 @@ const userSchema=new mongoose.Schema({
     },
     playlist:{
         type:Array
+    },
+    token:{
+        type:String
     }
 })
 const UserModel=mongoose.model('user_details',userSchema);
