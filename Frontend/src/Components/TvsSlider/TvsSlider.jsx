@@ -23,7 +23,7 @@ function  TvsSlider({singleCategory}) {
     useEffect(()=>{
         const getTopRatedMoviesFunction=async()=>{
             try {
-                const response=await fetch(`http://localhost:10000/api/tv/${singleCategory}`,{
+                const response=await fetch(`https://netflix-clone-ghjh.onrender.com/api/tv/${singleCategory}`,{
                   method:"GET",
                   headers:{
                     "Content-Type":"application/json"

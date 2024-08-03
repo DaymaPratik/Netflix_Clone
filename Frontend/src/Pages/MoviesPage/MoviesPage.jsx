@@ -17,7 +17,7 @@ function MoviesPage() {
 const getTrendingCoverFunction=async()=>{
   setLoading(true);
   try {
-    const response=await fetch(`http://localhost:10000/api/trendingSingle${contentType}`,{
+    const response=await fetch(`https://netflix-clone-ghjh.onrender.com/api/trendingSingle${contentType}`,{
       method:"GET",
       headers:{
         "Content-Type":"application/json"

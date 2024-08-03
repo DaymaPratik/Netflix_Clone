@@ -35,7 +35,7 @@ function SearchPage() {
     const searchFunction=async(e)=>{
         e.preventDefault();
         try {
-            const response=await fetch(`http://localhost:10000/api/search/${contentType}/${searchQuery}`,{
+            const response=await fetch(`https://netflix-clone-ghjh.onrender.com/api/search/${contentType}/${searchQuery}`,{
                 method:"GET",
                 headers:{
                     "Content-Type":"application/json"

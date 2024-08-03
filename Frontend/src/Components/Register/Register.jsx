@@ -12,7 +12,7 @@ function Register({handleChangeFunction,setAlreadyNotLogin,alreadyNotLogin}) {
     const registerUserFunction=async(e)=>{
         e.preventDefault();
           try {
-            const response=await fetch('http://localhost:10000/api/register',{
+            const response=await fetch('https://netflix-clone-ghjh.onrender.com/api/register',{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json"

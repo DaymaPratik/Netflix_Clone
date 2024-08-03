@@ -25,7 +25,7 @@ function DetailsPageMovie() {
     useEffect(()=>{
       const getMovieDetailsfFunction=async()=>{
         try {
-          const response=await fetch(`http://localhost:10000/api/tv/details/${id}`,{
+          const response=await fetch(`https://netflix-clone-ghjh.onrender.com/api/tv/details/${id}`,{
             method:"GET",
             headers:{
               "Content-Type":"application/json"
@@ -46,7 +46,7 @@ function DetailsPageMovie() {
     useEffect(()=>{
       const getMovieTrailersFunction=async()=>{
         try {
-          const response=await fetch(`http://localhost:10000/api/tv/trailers/${id}`,{
+          const response=await fetch(`https://netflix-clone-ghjh.onrender.com/api/tv/trailers/${id}`,{
             method:"GET",
             headers:{
               "Content-Type":"application/json"
@@ -70,7 +70,7 @@ function DetailsPageMovie() {
     useEffect(()=>{
       const getSimlarMoviesFunction=async()=>{
         try {
-          const response=await fetch(`http://localhost:10000/api/tv/similar/${id}`,{
+          const response=await fetch(`https://netflix-clone-ghjh.onrender.com/api/tv/similar/${id}`,{
             method:"GET",
             headers:{
               "Content-Type":"application/json"
