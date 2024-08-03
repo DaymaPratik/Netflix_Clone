@@ -16,7 +16,7 @@ app.use(cors({
   }))
 app.use(express.json());
 app.use(cookieParser());
-mongoose.connect('mongodb+srv://pratikdayma45:LzJlylhbT6B09Fqd@cluster0.cpq5ooo.mongodb.net/')
+mongoose.connect('mongodb+srv://pratikdayma45:LzJlylhbT6B09Fqd@cluster0.cpq5ooo.mongodb.net/Netflix_Clone')
     .then(() => { console.log('DB Connected Successfully'); })
     .catch((e) => { console.log("Error connecting DB ", e); })
 
