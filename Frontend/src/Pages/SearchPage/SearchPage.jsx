@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState ,useEffect} from 'react'
 import Navbar from '../../Components/Navbar/Navbar'
 import { IoSearch } from "react-icons/io5";
 import SimilarMoviesSlider from '../../Components/SimilarMoviesSlider/SimilarMoviesSlider';

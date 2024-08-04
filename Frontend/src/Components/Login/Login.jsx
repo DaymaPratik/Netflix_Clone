@@ -3,16 +3,20 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../Context/UserContextProvider";
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ClockLoader from "react-spinners/ClockLoader"
 function Login({handleChangeFunction,setAlreadyNotLogin,alreadyNotLogin}) {
   const {userDetails,setUserDetails}=useContext(UserContext);
     const [allRequired,setAllRequired]=useState(false);
     const [showPassword,setShowPassword]=useState(false);
     const [inValidPass,setInValidPass]=useState(false);
     const [inValidEmail,setInValidEmail]=useState(false);
+    const [loading,setLoading]=useState(false);
     const navigate=useNavigate();
     const loginUserFunction=async(e)=>{
         e.preventDefault();
+        setLoading(true);
         try {
             const response=await fetch('https://netflix-clone-ghjh.onrender.com/api/login',{
                 method:"POST",
@@ -42,11 +46,17 @@ function Login({handleChangeFunction,setAlreadyNotLogin,alreadyNotLogin}) {
                 return;
             }
             setUserDetails(data.userObj);
-            navigate('/browse');
             
+            navigate('/browse');
+            toast(data.message);
             
         } catch (error) {
             console.log("ERROR WHILE LOGIN USER FRONTEND",error);
+            toast(data.message);
+        }finally{
+          setTimeout(()=>{
+            setLoading(false);
+          },1000)
         }
     }
   return (
@@ -136,8 +146,15 @@ function Login({handleChangeFunction,setAlreadyNotLogin,alreadyNotLogin}) {
           className="bg-[rgb(255,0,0)] border-2 border-red-500 transition 
           duration-150 ease-in px-3 py-1 my-3 hover:bg-transparent mx-auto text-[20px] rounded-md w-[70%] block"
         >
-          Login
+         {loading ? "Loading..." : "Login"}
         </button>
+        {
+          loading && <span className="block py-2 w-fit mx-auto justify-center ">
+            <ClockLoader 
+            color="#ff0000"
+            />
+            </span>
+        }
         
         
            <p className="text-center text-[20px] my-3">Don&#39;t have an account ? 

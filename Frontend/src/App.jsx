@@ -10,6 +10,8 @@ import DetailsPageTvs from "./Pages/DetailsPageTvs/DetailsPageTvs.jsx";
 import SearchPage from "./Pages/SearchPage/SearchPage.jsx";
 import UserContextProvider from "./Context/UserContextProvider.jsx";
 import PlayListContextProvider from "./Context/PlayListContextProvider.jsx";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
  
@@ -19,9 +21,11 @@ function App() {
       <BrowserRouter>
        <UserContextProvider>
    <PlayListContextProvider>
+   
    <Routes>
      <Route path="/" element={<Authentication/>}/>
      <Route path="/browse" element={<BrowsePage/>}/>
+     <Route path="/mylist" element={<MyListPage/>}/>
      <Route path="/tvspage" element={<TvsPage/>}/>
      <Route path="/movies" element={<MoviesPage/>}/>
      <Route path="/search" element={<SearchPage/>}/>

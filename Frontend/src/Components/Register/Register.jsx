@@ -3,14 +3,18 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../Context/UserContextProvider";
+import ClockLoader from "react-spinners/ClockLoader"
+import { toast } from 'react-toastify';
 function Register({handleChangeFunction,setAlreadyNotLogin,alreadyNotLogin}) {
   const {userDetails,setUserDetails}=useContext(UserContext);
     const[doesEmailExists,setDoesEmailExists]=useState(false);
     const [allRequired,setAllRequired]=useState(false);
     const [showPassword,setShowPassword]=useState(false);
+    const [loading,setLoading]=useState(false);
     const navigate=useNavigate();
     const registerUserFunction=async(e)=>{
         e.preventDefault();
+        setLoading(true);
           try {
             const response=await fetch('https://netflix-clone-ghjh.onrender.com/api/register',{
                 method:"POST",
@@ -32,8 +36,12 @@ function Register({handleChangeFunction,setAlreadyNotLogin,alreadyNotLogin}) {
                }
                setUserDetails(data.userObj);
               navigate('/browse');
+              toast(data.message);
           } catch (error) {
             console.log("ERROR WHILE REGISTERING USER IN FRONTEND",error);
+            toast(data.message);
+          }finally{
+            setLoading(false);
           }
     }
   return (
@@ -117,7 +125,9 @@ function Register({handleChangeFunction,setAlreadyNotLogin,alreadyNotLogin}) {
               <FaEye
                 className="text-[25px] text-red-500"
                 onClick={() => {
-                  setShowPassword(true);
+                  setTimeout(()=>{
+                    setLoading(false);
+                  },1000)
                 }}
               />
             </div>
@@ -134,8 +144,15 @@ function Register({handleChangeFunction,setAlreadyNotLogin,alreadyNotLogin}) {
           className="bg-[rgb(255,0,0)] border-2 border-red-500 transition duration-150 
           ease-in px-3 py-1 hover:bg-transparent mx-auto text-[20px] rounded-md w-[70%] block"
         >
-          Register
+           {loading ? "Loading..." : "Register"}
         </button>
+        {
+          loading && <span className="block py-2 w-fit mx-auto justify-center ">
+            <ClockLoader 
+            color="#ff0000"
+            />
+            </span>
+        }
         
         
            <p className="text-center text-[20px] my-3">Have an account ? 

@@ -7,6 +7,8 @@ import MovieSlider from "../../Components/MovieSlider/MovieSlider";
 import TvsSlider from "../../Components/TvsSlider/TvsSlider";
 import { UserContext } from "../../Context/UserContextProvider";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function BrowsePage() {
   const {loading,setLoading}=useContext(LoadingContext)
   const {userDetails}=useContext(UserContext);
@@ -25,6 +27,7 @@ const getTrendingCoverFunction=async()=>{
       },
       credentials:"include"
     })
+    
     const data=await response.json();
     setCoverObj(data.content);
   } catch (error) {

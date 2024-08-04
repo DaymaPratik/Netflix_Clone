@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 export const UserContext=createContext();
 function UserContextProvider({children}) {
     const navigate=useNavigate();
@@ -27,6 +28,8 @@ function UserContextProvider({children}) {
         });
         sessionStorage.removeItem('userDetails');
         navigate('/');
+        
+        toast.success("Logged Out Successfully")
       };
   return (
     <UserContext.Provider value={{userDetails,setUserDetails,logout}}>

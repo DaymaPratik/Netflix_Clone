@@ -15,3 +15,32 @@
   .hide-scrollbar::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
   }
+  /* toastStyles.css */
+
+
+/* Style for the toast container in dark mode */
+
+.Toastify__toast {
+  background: #333; /* Dark background for toast */
+  color: #ff0000; /* Red text color */
+}
+
+/* Optional: Customize the toast progress bar and close button */
+.Toastify__progress-bar {
+  background: #fffdfd; /* Red progress bar */
+}
+
+.Toastify__toast--info, .Toastify__toast--default {
+  background: #333; /* Dark background for default and info toasts */
+  color: #ff0000; /* Red text color for default and info toasts */
+}
+
+.Toastify__toast--success {
+  background: #333; /* Dark background for success toasts */
+  color: #ff0000; /* Red text color for success toasts */
+}
+
+.Toastify__toast--error {
+  background: #333; /* Dark background for error toasts */
+  color: #ff0000; /* Red text color for error toasts */
+}

@@ -80,43 +80,64 @@ const registerUserFunction=async(req,res)=>{
    
 }
 
-const addToPlayListFunction=async(req,res)=>{
-    const {_id,playlist}=req.body;
-    console.log(req.body);
+
+
+const addToPlayListFunction = async (req, res) => {
+    const { _id, playlist } = req.body;
+    console.log("BODY BODY____________________________", req.body);
     
     try {
-        const findUser=await UserModel.findById({_id});
-        if(!findUser){
-            return res.status(400).json({message:"User not found"})
+        const findUser = await UserModel.findById(_id);
+        if (!findUser) {
+            return res.status(400).json({ message: "User not found" });
         }
+
+        // Update the user's playlist
         const user = await UserModel.findOneAndUpdate(
             { _id },
-            { $set: { playlist: playlist } },
+            { $set: { playlist } },
             { new: true, upsert: true }
         );
-        res.status(200).json({message:"Added to playlist"})
+
+        res.status(200).json({ message: "Added to playlist" });
     } catch (error) {
-        console.log("ERROR WHILE ADD TO PLAYLIST BACKEND",error);
-        res.status(400).json({message:"UNABLE TO ADD TO PLAYLIST"})
+        console.log("ERROR WHILE ADD TO PLAYLIST BACKEND", error);
+        res.status(400).json({ message: "UNABLE TO ADD TO PLAYLIST" });
     }
-}
+};
+
 
 const getPlayListFunction=async(req,res)=>{
     const {id}=req.params;
     try {
-        const findUser=await UserModel.findById({id});
+        const findUser=await UserModel.findById(id);
         if(!findUser){
             return res.status(400).json({message:"User not found"})
         }
-        res.status(200).json({message:"Added to playlist",platlistArray:findUser.playlist})
+        res.status(200).json({message:"GETTING playlist",playListArray:findUser.playlist})
     } catch (error) {
         console.log("ERROR WHILE ADD TO PLAYLIST BACKEND",error);
         res.status(400).json({message:"UNABLE TO GET PLAYLIST"})
+    }
+}
+const deleteFomPlayListFunction=async(req,res)=>{
+    const {_id,playlist}=req.body;
+    try {
+        const user= await UserModel.findByIdAndUpdate(
+            { _id },
+            { $set: { playlist } },
+            { new: true, upsert: true }
+        )
+        res.status(200).json({message:"Item deleted from playlist",user:user})
+    } catch (error) {
+        console.log("ERROR BACKEND WHILE DELETING FROM PLAYLIST",error);
+        res.status(400).json({message:"NOT ABLE TO DELETE ITEM"});
+        
     }
 }
 module.exports={
     loginUserFunction,
     registerUserFunction,
     getPlayListFunction,
-    addToPlayListFunction
+    addToPlayListFunction,deleteFomPlayListFunction
 }

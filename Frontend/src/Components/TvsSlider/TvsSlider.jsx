@@ -56,8 +56,23 @@ function  TvsSlider({singleCategory}) {
             return(
                 <Link to={`/tv/details/${item.id}`} key={idx}>
                 <div className='flex flex-col  h-[140px] min-[600px]:h-[200px] min-[768px]:h-[250px] min-[1024px]:h-[280px] min-[1256px]:h-[420px]'>
-                <div key={idx} className='w-[130px] min-[600px]:w-[170px] min-[768px]:w-[200px] min-[1024px]:w-[250px] min-[1256px]:w-[320px] overflow-hidden rounded-md '>
-                
+                <div key={idx} className='w-[130px] min-[600px]:w-[170px] min-[768px]:w-[200px] min-[1024px]:w-[250px] min-[1256px]:w-[320px] overflow-hidden relative rounded-md '>
+                <div className={`absolute h-full w-full top-0 left-0 bg-[#0f0e0e3b] z-100 flex items-center justify-center transition ease-in duration-150}`}
+                  onMouseEnter={() => setHoveredItem(idx)}
+                  onMouseLeave={() => setHoveredItem(null)}
+                >
+                  {hoveredItem === idx && (
+                    <div
+                      className='absolute h-full w-full top-0 left-0 bg-[#0f0e0e3b] z-100 flex items-center justify-center transition ease-in duration-150'
+                    >
+                      <button className='bg-[#ff0000] px-2 block mx-auto py-1 text-white rounded-sm' onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        addtoPlaylistFunction(item);
+                      }}>Add To PlayList</button>
+                    </div>
+                  )}
+                  </div>
                     <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt="" className='transition duration-200 ease-in hover:scale-125 hover:opacity-60' />   
                 </div>
                 <p className='text-[white] text-center text-[12px] min-[768px]:text-[20px] mt-2'>{item.name}</p>

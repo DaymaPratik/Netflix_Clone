@@ -54,7 +54,7 @@ function  MovieSlider({singleCategory}) {
     ref={sliderRef}
     >
      {
-        topRatedMoviesArr.map((item,idx)=>{
+        topRatedMoviesArr?.map((item,idx)=>{
             return(
                 <Link to={`/movie/details/${item.id}`} key={idx}>
                 <div className='flex flex-col  h-[140px] min-[600px]:h-[200px] min-[768px]:h-[250px] min-[1024px]:h-[280px] min-[1256px]:h-[420px]'>
