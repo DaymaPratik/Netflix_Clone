@@ -1,45 +1,43 @@
 {
   "github": {
     "autoJobCancelation": false
-  }
-}
-{
-    "routes":[
-        {
-          "src":"/",
-          "dest":"/"
-        },
-        {
-           "src":"/tvspage",
-          "dest":"/"
-        },
-        {
-            "src":"/movies",
-           "dest":"/"
-         },
-         {
-            "src":"/browse",
-           "dest":"/"
-         },
-         {
-            "src":"/search",
-           "dest":"/"
-         },
-         {
-            "src":"/history",
-           "dest":"/"
-         },
-         {
-            "src":"/movie/details/:id",
-           "dest":"/"
-         },
-         {
-          "src":"/tv/details/:id",
-          "dest":"/"
-         },
-         {
-          "src":"/mylist",
-          "dest":"/"
-         }
-    ]
+  },
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/"
+    },
+    {
+      "src": "/tvspage",
+      "dest": "/tvspage"
+    },
+    {
+      "src": "/movies",
+      "dest": "/movies"
+    },
+    {
+      "src": "/browse",
+      "dest": "/browse"
+    },
+    {
+      "src": "/search",
+      "dest": "/search"
+    },
+    {
+      "src": "/history",
+      "dest": "/history"
+    },
+    {
+      "src": "/movie/details/:id",
+      "dest": "/movie/details/:id"
+    },
+    {
+      "src": "/tv/details/:id",
+      "dest": "/tv/details/:id"
+    },
+    {
+      "src": "/mylist",
+      "dest": "/mylist"
+    }
+  ]
 }
