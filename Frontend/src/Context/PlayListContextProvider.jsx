@@ -38,6 +38,7 @@ function PlayListContextProvider({ children }) {
             }
 
             const data = await response.json();
+            setUserDetails(data.user);
             toast.success("Added To Playlist");
             console.log(data);
         } catch (error) {

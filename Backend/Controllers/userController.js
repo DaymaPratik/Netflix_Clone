@@ -99,7 +99,7 @@ const addToPlayListFunction = async (req, res) => {
             { new: true, upsert: true }
         );
 
-        res.status(200).json({ message: "Added to playlist" });
+        res.status(200).json({ message: "Added to playlist" ,user:user});
     } catch (error) {
         console.log("ERROR WHILE ADD TO PLAYLIST BACKEND", error);
         res.status(400).json({ message: "UNABLE TO ADD TO PLAYLIST" });
