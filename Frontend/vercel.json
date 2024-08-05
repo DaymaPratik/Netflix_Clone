@@ -1,7 +1,4 @@
 {
-  "github": {
-    "autoJobCancelation": false
-  },
   "routes": [
     {
       "src": "/",
@@ -9,35 +6,35 @@
     },
     {
       "src": "/tvspage",
-      "dest": "/tvspage"
+      "dest": "/"
     },
     {
       "src": "/movies",
-      "dest": "/movies"
+      "dest": "/"
     },
     {
       "src": "/browse",
-      "dest": "/browse"
+      "dest": "/"
     },
     {
       "src": "/search",
-      "dest": "/search"
+      "dest": "/"
     },
     {
       "src": "/history",
-      "dest": "/history"
+      "dest": "/"
     },
     {
       "src": "/movie/details/:id",
-      "dest": "/movie/details/:id"
+      "dest": "/"
     },
     {
       "src": "/tv/details/:id",
-      "dest": "/tv/details/:id"
+      "dest": "/"
     },
     {
       "src": "/mylist",
-      "dest": "/mylist"
+      "dest": "/"
     }
   ]
 }
