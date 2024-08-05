@@ -11,8 +11,7 @@ function UserContextProvider({children}) {
             email:"",
             password:"",
             _id:"",
-            __v:"",
-            playlist:""
+            _v:"",
         }
     })
     useEffect(()=>{
@@ -26,7 +25,6 @@ function UserContextProvider({children}) {
           password: "",
           _id:"",
           __v:"",
-          playlist:""
         });
         sessionStorage.removeItem('userDetails');
         navigate('/');
