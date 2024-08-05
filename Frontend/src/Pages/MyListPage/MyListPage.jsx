@@ -47,7 +47,7 @@ function MyListPage() {
       const data=await response.json();
 
       console.log(data);
-      setPlayListArray(data.playListArray);
+      // setPlayListArray(data.playListArray);
       
     }
      catch (error) {

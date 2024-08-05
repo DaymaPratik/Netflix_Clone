@@ -30,7 +30,7 @@ function PlayListContextProvider({ children }) {
                     'Content-Type': 'application/json',
                 },
                 credentials: 'include',
-                body: JSON.stringify(userDetails),
+                body: JSON.stringify(userDetails), 
             });
 
             if (!response.ok) {
