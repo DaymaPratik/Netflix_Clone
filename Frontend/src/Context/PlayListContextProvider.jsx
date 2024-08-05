@@ -30,10 +30,7 @@ function PlayListContextProvider({ children }) {
                     'Content-Type': 'application/json',
                 },
                 credentials: 'include',
-                body: JSON.stringify({
-                    _id: userDetails._id, // Ensure userDetails._id is valid
-                    playlist: [...playListArray, item] // Updated playlist
-                }),
+                body: JSON.stringify(userDetails),
             });
 
             if (!response.ok) {
