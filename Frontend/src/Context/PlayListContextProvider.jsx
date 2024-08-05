@@ -10,6 +10,7 @@ function PlayListContextProvider({ children }) {
         // Update the playlist state
         setPlayListArray((prevArray) => {
             const newArray = [...prevArray, item];
+            
             // Update userDetails with the new playlist array
             setUserDetails((prevUserDetails) => ({
                 ...prevUserDetails,
@@ -21,7 +22,7 @@ function PlayListContextProvider({ children }) {
         });
 
         try {
-            const response = await fetch('http://localhost:10000/api/addToPlaylist', {
+            const response = await fetch('https://netflix-clone-ghjh.onrender.com/api/addToPlaylist', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
