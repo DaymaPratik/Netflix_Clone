@@ -1,4 +1,9 @@
 {
+  "github": {
+    "autoJobCancelation": false
+  }
+}
+{
     "routes":[
         {
           "src":"/",
