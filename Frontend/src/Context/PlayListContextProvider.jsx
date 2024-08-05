@@ -34,11 +34,12 @@ function PlayListContextProvider({ children }) {
             });
 
             const data = await response.json();
-            toast.success(data.message);
+            toast.success("Added To Playlist");
             console.log(data);
         } catch (error) {
             console.log('Error saving playlist:', error);
-            toast.success(data.message);
+           console.log("Unable to Add to Playlist");
+           
         }
     };
 

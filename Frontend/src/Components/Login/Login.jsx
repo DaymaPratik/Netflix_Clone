@@ -48,11 +48,11 @@ function Login({handleChangeFunction,setAlreadyNotLogin,alreadyNotLogin}) {
             setUserDetails(data.userObj);
             
             navigate('/browse');
-            toast(data.message);
+            toast("Logged in succesfully");
             
         } catch (error) {
             console.log("ERROR WHILE LOGIN USER FRONTEND",error);
-            toast(data.message);
+            toast.error("Unable to Login");
         }finally{
           setTimeout(()=>{
             setLoading(false);

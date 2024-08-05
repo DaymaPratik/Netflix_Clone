@@ -30,7 +30,7 @@ function MyListPage() {
      
    } catch (error) {
     console.log("FRONTEND ERROR WHLE DELETING ITEM FROM PLAYLIST",error);
-    toast.success("Not Able Deleted From Playlist");
+    toast.error("Not Able To Delete From Playlist");
     
    }
     

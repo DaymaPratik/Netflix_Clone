@@ -39,7 +39,7 @@ function Register({handleChangeFunction,setAlreadyNotLogin,alreadyNotLogin}) {
               toast(data.message);
           } catch (error) {
             console.log("ERROR WHILE REGISTERING USER IN FRONTEND",error);
-            toast(data.message);
+            toast.error("Unable to Register");
           }finally{
             setLoading(false);
           }
