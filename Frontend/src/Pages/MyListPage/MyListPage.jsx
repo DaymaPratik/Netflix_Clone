@@ -26,11 +26,11 @@ function MyListPage() {
      })
      const data=await response.json();
      console.log(data);
-     toast.success(data.message);
+     toast.success("Deleted Form Palylist");
      
    } catch (error) {
     console.log("FRONTEND ERROR WHLE DELETING ITEM FROM PLAYLIST",error);
-    toast.success(data.message);
+    toast.success("Not Able Deleted From Playlist");
     
    }
     
@@ -56,7 +56,7 @@ function MyListPage() {
   }
   useEffect(()=>{
     showMyPlayListFunction();
-  },[])
+  },[playListArray])
   return (
     <main className='bg-black'>
     <Navbar/>

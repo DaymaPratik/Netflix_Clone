@@ -2,7 +2,8 @@ import React, { useEffect,useRef,useState,useContext} from 'react'
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
 import '../../index.css'
-import { Link } from 'react-router-dom';import  { PlayListContext } from '../../Context/PlayListContextProvider';
+import { Link } from 'react-router-dom';
+import  { PlayListContext } from '../../Context/PlayListContextProvider';
 
 function SimilarTvsSlider({similarContentArr,contentType}) {
     const {addtoPlaylistFunction}=useContext(PlayListContext);
