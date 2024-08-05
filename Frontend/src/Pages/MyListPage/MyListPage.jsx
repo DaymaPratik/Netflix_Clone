@@ -59,7 +59,7 @@ function MyListPage() {
   }
   useEffect(()=>{
     showMyPlayListFunction();
-  },[playListArray])
+  },[])
   return (
     <main className='bg-black'>
     <Navbar/>
