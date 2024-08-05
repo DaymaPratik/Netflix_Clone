@@ -14,7 +14,10 @@ function MyListPage() {
       return obj.name !== item.name || obj.title !== item.title;
     })
     setPlayListArray(modifiedArray);
-    setUserDetails({...userDetails,playlist:modifiedArray});
+    setUserDetails((prevUserDetails) => ({
+      ...prevUserDetails,
+      playlist: newArray
+  }));
    try {
      const response=await fetch('https://netflix-clone-ghjh.onrender.com/api/deleteItem',{
       method:"PUT",
