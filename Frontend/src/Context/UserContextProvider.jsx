@@ -1,9 +1,11 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { PlayListContext } from './PlayListContextProvider';
 export const UserContext=createContext();
 function UserContextProvider({children}) {
     const navigate=useNavigate();
+    const {playListArray}=useContext(PlayListContext);
     const [userDetails,setUserDetails]=useState(()=>{
         const savedUserDetails=JSON.parse(sessionStorage.getItem('userDetail'));
         return savedUserDetails ? savedUserDetails : {
@@ -17,7 +19,7 @@ function UserContextProvider({children}) {
     })
     useEffect(()=>{
         sessionStorage.setItem('userDetail',JSON.stringify(userDetails));
-    },[userDetails])
+    },[userDetails,playListArray])
 
     const logout = () => {
         setUserDetails({
