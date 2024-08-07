@@ -5,8 +5,21 @@ import { toast } from 'react-toastify';
 export const PlayListContext = createContext();
 
 function PlayListContextProvider({ children }) {
-    const [playListArray, setPlayListArray] = useState([]);
+   
     const { userDetails, setUserDetails } = useContext(UserContext);
+    const [playListArray, setPlayListArray] = useState(()=>{
+        const saveddPlaylist=JSON.parse(sessionStorage.getItem('playlist'));
+        setUserDetails({
+            ...userDetails,
+            playlist:saveddPlaylist || [],
+        }) 
+        return saveddPlaylist ? saveddPlaylist : [];
+       
+    });
+
+    useEffect(()=>{
+        sessionStorage.setItem('playlist',JSON.stringify(playListArray));
+    },[playListArray])
 
     const addtoPlaylistFunction = async (item) => {
         // Update the playlist state and user details

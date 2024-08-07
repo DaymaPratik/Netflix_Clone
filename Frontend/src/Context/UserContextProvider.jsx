@@ -5,18 +5,23 @@ export const UserContext=createContext();
 function UserContextProvider({children}) {
     const navigate=useNavigate();
     const [userDetails,setUserDetails]=useState(()=>{
-        const savedUserDetails=JSON.parse(sessionStorage.getItem('userDetail'));
+        const savedUserDetails=JSON.parse(sessionStorage.getItem('userDetails'));
         return savedUserDetails ? savedUserDetails : {
             userName:"",
             email:"",
             password:"",
             _id:"",
             _v:"",
-            playlist:[]
         }
     })
     useEffect(()=>{
-        sessionStorage.setItem('userDetail',JSON.stringify(userDetails));
+        sessionStorage.setItem('userDetails',JSON.stringify({
+          userName:userDetails.userName,
+          email:userDetails.email,
+          password:userDetails.password,
+          _id:userDetails._id,
+          _v:userDetails._v,
+        }));
     },[userDetails])
 
     const logout = () => {
@@ -26,7 +31,6 @@ function UserContextProvider({children}) {
           password: "",
           _id:"",
           __v:"",
-          playlist:[]
         });
         sessionStorage.removeItem('userDetails');
         navigate('/');
