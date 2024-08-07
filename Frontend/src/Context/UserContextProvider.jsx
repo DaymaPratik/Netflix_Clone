@@ -15,13 +15,7 @@ function UserContextProvider({children}) {
         }
     })
     useEffect(()=>{
-        sessionStorage.setItem('userDetails',JSON.stringify({
-          userName:userDetails.userName,
-          email:userDetails.email,
-          password:userDetails.password,
-          _id:userDetails._id,
-          _v:userDetails._v,
-        }));
+        sessionStorage.setItem('userDetails',JSON.stringify(userDetails));
     },[userDetails])
 
     const logout = () => {
