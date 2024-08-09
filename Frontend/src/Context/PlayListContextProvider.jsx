@@ -36,7 +36,7 @@ function PlayListContextProvider({ children }) {
             }
 
             const data = await response.json();
-            setUserDetails(data.user); // Update userDetails with server response
+            // setUserDetails(data.user); // Update userDetails with server response
 
             // Toast and log the successful addition
             toast.success("Added To Playlist");
