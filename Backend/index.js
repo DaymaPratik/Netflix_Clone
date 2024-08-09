@@ -24,3 +24,5 @@ app.use(userRouter);
 app.use(movieRouter);
 app.use(tvsRouter);
 app.listen(10000, () => { console.log("server is runnig at port 10000"); })
+
+// mongodb+srv://pratikdayma45:LzJlylhbT6B09Fqd@cluster0.cpq5ooo.mongodb.net/Netflix_Clone

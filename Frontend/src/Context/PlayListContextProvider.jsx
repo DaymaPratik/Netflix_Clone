@@ -1,49 +1,42 @@
-import React, { createContext, useState, useContext,useEffect } from 'react';
-import { UserContext } from './UserContextProvider'; // Ensure this file exists and exports UserContext
+import React, { createContext, useState, useContext, useEffect } from 'react';
+import { UserContext } from './UserContextProvider';
 import { toast } from 'react-toastify';
 
 export const PlayListContext = createContext();
 
 function PlayListContextProvider({ children }) {
-   
     const { userDetails, setUserDetails } = useContext(UserContext);
-    const [playListArray, setPlayListArray] = useState(()=>{
-        const saveddPlaylist=JSON.parse(sessionStorage.getItem('playlist'));
-        setUserDetails({
-            ...userDetails,
-            playlist:saveddPlaylist || [],
-        }) 
-        return saveddPlaylist ? saveddPlaylist : [];
-       
+    const [playListArray, setPlayListArray] = useState(() => {
+        const savedPlaylist = JSON.parse(sessionStorage.getItem('playlist'));
+        return savedPlaylist || [];
     });
 
-    useEffect(()=>{
-        sessionStorage.setItem('playlist',JSON.stringify(playListArray));
-    },[playListArray])
+    useEffect(() => {
+        // Update UserContext when the component mounts or `playListArray` changes
+        setUserDetails((prevDetails) => ({
+            ...prevDetails,
+            playlist: playListArray,
+        }));
+    }, [playListArray, setUserDetails]);
+
+    useEffect(() => {
+        sessionStorage.setItem('playlist', JSON.stringify(playListArray));
+    }, [playListArray]);
 
     const addtoPlaylistFunction = async (item) => {
-        // Update the playlist state and user details
         setPlayListArray((prevArray) => {
             const newArray = [...prevArray, item];
-
-            // Update userDetails with the new playlist array
-            setUserDetails((prevUserDetails) => ({
-                ...prevUserDetails,
-                playlist: newArray
-            }));
-
             return newArray;
         });
 
         try {
-            // Fetch request to update the playlist on the server
             const response = await fetch('https://netflix-clone-ghjh.onrender.com/api/addToPlaylist', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 credentials: 'include',
-                body: JSON.stringify(userDetails), 
+                body: JSON.stringify(userDetails),
             });
 
             if (!response.ok) {
