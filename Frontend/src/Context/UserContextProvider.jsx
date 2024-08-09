@@ -6,7 +6,7 @@ function UserContextProvider({children}) {
     const navigate=useNavigate();
     const [userDetails,setUserDetails]=useState(()=>{
         const savedUserDetails=JSON.parse(sessionStorage.getItem('userDetails'));
-        return savedUserDetails ? savedUserDetails : {
+        return  savedUserDetails || {
             userName:"",
             email:"",
             password:"",
