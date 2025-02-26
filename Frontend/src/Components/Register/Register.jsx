@@ -125,6 +125,7 @@ function Register({handleChangeFunction,setAlreadyNotLogin,alreadyNotLogin}) {
               <FaEye
                 className="text-[25px] text-red-500"
                 onClick={() => {
+                  setShowPassword(true)
                   setTimeout(()=>{
                     setLoading(false);
                   },1000)
